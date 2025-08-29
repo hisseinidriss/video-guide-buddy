@@ -14,9 +14,10 @@ interface VideoResultsProps {
   videos: Video[];
   onVideoSelect: (video: Video) => void;
   searchQuery: string;
+  videoLocation: string;
 }
 
-export const VideoResults = ({ videos, onVideoSelect, searchQuery }: VideoResultsProps) => {
+export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation }: VideoResultsProps) => {
   if (videos.length === 0 && searchQuery) {
     return (
       <div className="text-center py-12">

@@ -22,7 +22,7 @@ const mockVideos: Video[] = [
     description: "Step-by-step guide on resetting your account password and security settings.",
     duration: "3:24",
     thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=225&fit=crop",
-    videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4"
+    videoUrl: "password-reset.mp4"
   },
   {
     id: "2", 
@@ -30,7 +30,7 @@ const mockVideos: Video[] = [
     description: "Common solutions for login problems and account access issues.",
     duration: "5:12",
     thumbnail: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=225&fit=crop",
-    videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
+    videoUrl: "login-troubleshooting.mp4"
   },
   {
     id: "3",
@@ -38,7 +38,7 @@ const mockVideos: Video[] = [
     description: "Learn how to enable and configure 2FA for enhanced account security.",
     duration: "4:38",
     thumbnail: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=225&fit=crop",
-    videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4"
+    videoUrl: "two-factor-auth.mp4"
   }
 ];
 
@@ -136,6 +136,7 @@ const Index = () => {
               videos={searchResults}
               onVideoSelect={handleVideoSelect}
               searchQuery={searchQuery}
+              videoLocation={videoLocation}
             />
           </div>
         )}
@@ -146,6 +147,7 @@ const Index = () => {
           video={selectedVideo}
           onClose={handleCloseVideo}
           onBack={handleBackToResults}
+          videoLocation={videoLocation}
         />
       )}
     </div>

@@ -15,9 +15,16 @@ interface VideoPlayerProps {
   video: Video;
   onClose: () => void;
   onBack: () => void;
+  videoLocation: string;
 }
 
-export const VideoPlayer = ({ video, onClose, onBack }: VideoPlayerProps) => {
+export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlayerProps) => {
+  // Construct full video path
+  const getFullVideoPath = (filename: string) => {
+    // Handle different path formats
+    const basePath = videoLocation.endsWith('/') ? videoLocation : videoLocation + '/';
+    return basePath + filename;
+  };
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <Card className="w-full max-w-4xl max-h-[90vh] overflow-hidden bg-card">
@@ -51,9 +58,9 @@ export const VideoPlayer = ({ video, onClose, onBack }: VideoPlayerProps) => {
               poster={video.thumbnail}
               preload="metadata"
             >
-              <source src={video.videoUrl} type="video/mp4" />
-              <source src={video.videoUrl} type="video/webm" />
-              <source src={video.videoUrl} type="video/ogg" />
+              <source src={getFullVideoPath(video.videoUrl)} type="video/mp4" />
+              <source src={getFullVideoPath(video.videoUrl)} type="video/webm" />
+              <source src={getFullVideoPath(video.videoUrl)} type="video/ogg" />
               Your browser does not support the video tag.
             </video>
           </div>
