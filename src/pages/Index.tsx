@@ -209,7 +209,7 @@ const Index = () => {
               </p>
             </div>
             
-            <SearchBox onSearch={handleSearch} />
+            <SearchBox onSearch={handleSearch} videos={mockVideos} />
             
             <div className="mt-8 text-sm text-muted-foreground">
               Search for Microsoft Teams topics like "join meeting", "make calls", "share files", or "manage meetings"
@@ -233,7 +233,7 @@ const Index = () => {
             </div>
             
             <div className="mb-8">
-              <SearchBox onSearch={handleSearch} />
+              <SearchBox onSearch={handleSearch} videos={mockVideos} />
             </div>
             
             <VideoResults
