@@ -58,28 +58,48 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
         </div>
         
         <div className="p-0">
-          <div className="aspect-video bg-black">
-            <video
-              controls
-              className="w-full h-full"
-              poster={video.thumbnail}
-              preload="metadata"
-              onError={(e) => {
-                console.error('Video failed to load:', getFullVideoPath(video.videoUrl));
-                console.error('Video error:', e);
+          <div className="aspect-video bg-black relative">
+            <iframe
+              src={`https://docs.google.com/file/d/1tR2z3K4mN9Lb8PqW5XcV7Y6nM2sT8uE1/preview`}
+              width="100%"
+              height="100%"
+              className="absolute inset-0"
+              allow="autoplay"
+              title={video.title}
+              onError={() => {
+                console.error('Iframe failed to load video');
               }}
-              onLoadStart={() => {
-                console.log('Video load started for:', getFullVideoPath(video.videoUrl));
-              }}
-            >
-              <source src={getFullVideoPath(video.videoUrl)} type="video/mp4" />
-              Your browser does not support the video tag or the video file cannot be found.
-              <br />
-              <br />
-              <strong>Expected video path:</strong> {getFullVideoPath(video.videoUrl)}
-              <br />
-              <strong>Please check your video location setting and ensure the video files are accessible.</strong>
-            </video>
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white">
+              <div className="text-center p-8">
+                <h3 className="text-xl mb-4">Video Player Notice</h3>
+                <p className="mb-4">
+                  GitHub raw URLs don't support direct video streaming due to CORS restrictions.
+                </p>
+                <p className="mb-4 text-sm">
+                  <strong>Current video URL:</strong><br />
+                  <code className="bg-gray-800 p-1 rounded text-xs break-all">
+                    {getFullVideoPath(video.videoUrl)}
+                  </code>
+                </p>
+                <div className="text-left text-sm space-y-2">
+                  <p><strong>Recommended solutions:</strong></p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Upload videos to Google Drive and use sharing links</li>
+                    <li>Use YouTube, Vimeo, or Wistia for video hosting</li>
+                    <li>Deploy videos to a CDN like CloudFlare or AWS S3</li>
+                    <li>Use Firebase Storage or similar cloud storage</li>
+                  </ul>
+                </div>
+                <Button 
+                  onClick={() => window.open(getFullVideoPath(video.videoUrl), '_blank')}
+                  className="mt-4"
+                  variant="outline"
+                >
+                  Try Direct Link
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
         
