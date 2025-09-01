@@ -24,13 +24,14 @@ export const SearchBox = ({ onSearch, onVideoSelect, videos = [] }: SearchBoxPro
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Filter suggestions based on query
+  // Filter suggestions based on query (title only)
   const suggestions = query.trim().length > 0 
     ? videos.filter(video =>
-        video.title.toLowerCase().includes(query.toLowerCase()) ||
-        video.description.toLowerCase().includes(query.toLowerCase())
+        video.title.toLowerCase().includes(query.toLowerCase())
       ).slice(0, 5) // Limit to 5 suggestions
     : [];
+
+  console.log('Query:', query, 'Suggestions found:', suggestions.length);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
