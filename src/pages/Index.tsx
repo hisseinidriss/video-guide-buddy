@@ -151,7 +151,7 @@ const Index = () => {
   const [searchResults, setSearchResults] = useState<Video[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [showResults, setShowResults] = useState(false);
-  const [videoLocation, setVideoLocation] = useState("https://isdb-my.sharepoint.com/:f:/g/personal/ahissein_isdb_org/EhTujG7E125NrswFO36M_l8BP5pXPzi46gWnkX86eUH1TQ?e=qbFHm6");
+  const [videoLocation, setVideoLocation] = useState("https://sample-videos.com/zip/10/mp4");
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
