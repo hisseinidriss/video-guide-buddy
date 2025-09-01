@@ -45,6 +45,12 @@ export default {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
+				// ISDB Brand Colors
+				isdb: {
+					teal: 'hsl(var(--isdb-teal))',
+					'teal-light': 'hsl(var(--isdb-teal-light))',
+					green: 'hsl(var(--isdb-green))'
+				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'

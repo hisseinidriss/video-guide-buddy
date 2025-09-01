@@ -26,13 +26,13 @@ export const SearchBox = ({ onSearch }: SearchBoxProps) => {
             placeholder="Ask a question about your issue..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="pl-12 pr-20 py-6 text-lg bg-input border-border rounded-2xl shadow-[var(--kb-search-shadow)] transition-[var(--transition-smooth)] focus:shadow-[var(--kb-hover-shadow)] focus:ring-2 focus:ring-primary/20 focus:border-primary/30"
+            className="pl-12 pr-20 py-6 text-lg bg-input border-border rounded-2xl shadow-[var(--isdb-search-shadow)] transition-[var(--transition-smooth)] focus:shadow-[var(--isdb-hover-shadow)] focus:ring-2 focus:ring-primary/20 focus:border-primary/30"
           />
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Button
             type="submit"
             size="sm"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 px-6 py-2 bg-primary hover:bg-primary-glow rounded-xl transition-[var(--transition-smooth)]"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 px-6 py-2 bg-primary hover:bg-primary-glow rounded-xl transition-[var(--transition-smooth)] text-primary-foreground font-medium"
           >
             Search
           </Button>

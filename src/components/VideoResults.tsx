@@ -47,7 +47,7 @@ export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation
         {videos.map((video) => (
           <Card
             key={video.id}
-            className="group cursor-pointer overflow-hidden bg-card hover:shadow-[var(--kb-card-shadow)] transition-[var(--transition-smooth)] border-border"
+            className="group cursor-pointer overflow-hidden bg-card hover:shadow-[var(--isdb-card-shadow)] transition-[var(--transition-smooth)] border-border hover:border-primary/30"
             onClick={() => onVideoSelect(video)}
           >
             <div className="relative aspect-video bg-muted">
@@ -64,7 +64,7 @@ export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation
                   <Play className="h-5 w-5 text-primary ml-0.5" />
                 </div>
               </div>
-              <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+              <div className="absolute bottom-2 right-2 bg-primary/90 text-primary-foreground text-xs px-2 py-1 rounded backdrop-blur-sm">
                 <Clock className="inline h-3 w-3 mr-1" />
                 {video.duration}
               </div>

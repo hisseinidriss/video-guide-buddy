@@ -98,10 +98,10 @@ const Index = () => {
                 className="h-20 w-auto mx-auto mb-6 object-contain"
               />
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Knowledge Base
+                ISDB Knowledge Base
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Find answers to your questions with our comprehensive video library
+                Access comprehensive support resources and video tutorials
               </p>
             </div>
             
