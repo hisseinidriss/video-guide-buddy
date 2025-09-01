@@ -151,7 +151,7 @@ const Index = () => {
   const [searchResults, setSearchResults] = useState<Video[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [showResults, setShowResults] = useState(false);
-  const [videoLocation, setVideoLocation] = useState("https://raw.githubusercontent.com/hisseinidriss/video-guide-buddy/main/Video");
+  const [videoLocation, setVideoLocation] = useState("https://drive.google.com/drive/folders/1dqBl3FeMA8tJmQ0kNrI8FiXXo9Bs8V_n");
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);

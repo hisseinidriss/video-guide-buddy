@@ -19,13 +19,22 @@ interface VideoPlayerProps {
 }
 
 export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlayerProps) => {
-  // Construct full video path with proper URL encoding for GitHub
+  // Construct full video path for different hosting services
   const getFullVideoPath = (filename: string) => {
-    // Handle different path formats
-    const basePath = videoLocation.endsWith('/') ? videoLocation : videoLocation + '/';
-    // URL encode the filename for GitHub raw URLs (spaces become %20)
-    const encodedFilename = encodeURIComponent(filename);
-    return basePath + encodedFilename;
+    if (videoLocation.includes('drive.google.com')) {
+      // For Google Drive, expect the filename to be a file ID or full embed URL
+      if (filename.includes('drive.google.com')) {
+        return filename; // Already a full Google Drive URL
+      } else {
+        // Assume filename is a Google Drive file ID
+        return `https://drive.google.com/file/d/${filename}/preview`;
+      }
+    } else {
+      // For other services (GitHub, CDN, etc.)
+      const basePath = videoLocation.endsWith('/') ? videoLocation : videoLocation + '/';
+      const encodedFilename = encodeURIComponent(filename);
+      return basePath + encodedFilename;
+    }
   };
 
   // Debug: Log the constructed path
@@ -59,47 +68,35 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
         
         <div className="p-0">
           <div className="aspect-video bg-black relative">
-            <iframe
-              src={`https://docs.google.com/file/d/1tR2z3K4mN9Lb8PqW5XcV7Y6nM2sT8uE1/preview`}
-              width="100%"
-              height="100%"
-              className="absolute inset-0"
-              allow="autoplay"
-              title={video.title}
-              onError={() => {
-                console.error('Iframe failed to load video');
-              }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white">
-              <div className="text-center p-8">
-                <h3 className="text-xl mb-4">Video Player Notice</h3>
-                <p className="mb-4">
-                  GitHub raw URLs don't support direct video streaming due to CORS restrictions.
-                </p>
-                <p className="mb-4 text-sm">
-                  <strong>Current video URL:</strong><br />
-                  <code className="bg-gray-800 p-1 rounded text-xs break-all">
-                    {getFullVideoPath(video.videoUrl)}
-                  </code>
-                </p>
-                <div className="text-left text-sm space-y-2">
-                  <p><strong>Recommended solutions:</strong></p>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>Upload videos to Google Drive and use sharing links</li>
-                    <li>Use YouTube, Vimeo, or Wistia for video hosting</li>
-                    <li>Deploy videos to a CDN like CloudFlare or AWS S3</li>
-                    <li>Use Firebase Storage or similar cloud storage</li>
-                  </ul>
-                </div>
-                <Button 
-                  onClick={() => window.open(getFullVideoPath(video.videoUrl), '_blank')}
-                  className="mt-4"
-                  variant="outline"
-                >
-                  Try Direct Link
-                </Button>
-              </div>
-            </div>
+            {videoLocation.includes('drive.google.com') ? (
+              // Google Drive embed
+              <iframe
+                src={getFullVideoPath(video.videoUrl)}
+                width="100%"
+                height="100%"
+                className="absolute inset-0"
+                allow="autoplay"
+                title={video.title}
+                onError={() => {
+                  console.error('Google Drive video failed to load');
+                }}
+              />
+            ) : (
+              // Fallback video player
+              <video
+                controls
+                className="w-full h-full"
+                poster={video.thumbnail}
+                preload="metadata"
+                onError={(e) => {
+                  console.error('Video failed to load:', getFullVideoPath(video.videoUrl));
+                  console.error('Video error:', e);
+                }}
+              >
+                <source src={getFullVideoPath(video.videoUrl)} type="video/mp4" />
+                Your browser does not support the video tag or the video file cannot be found.
+              </video>
+            )}
           </div>
         </div>
         
