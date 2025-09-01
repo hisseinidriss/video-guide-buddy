@@ -19,11 +19,13 @@ interface VideoPlayerProps {
 }
 
 export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlayerProps) => {
-  // Construct full video path
+  // Construct full video path with proper URL encoding for GitHub
   const getFullVideoPath = (filename: string) => {
     // Handle different path formats
     const basePath = videoLocation.endsWith('/') ? videoLocation : videoLocation + '/';
-    return basePath + filename;
+    // URL encode the filename for GitHub raw URLs (spaces become %20)
+    const encodedFilename = encodeURIComponent(filename);
+    return basePath + encodedFilename;
   };
 
   // Debug: Log the constructed path
