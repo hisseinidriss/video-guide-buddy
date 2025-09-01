@@ -151,7 +151,7 @@ const Index = () => {
   const [searchResults, setSearchResults] = useState<Video[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [showResults, setShowResults] = useState(false);
-  const [videoLocation, setVideoLocation] = useState("./videos");
+  const [videoLocation, setVideoLocation] = useState("https://raw.githubusercontent.com/hisseinidriss/video-guide-buddy/main/Video");
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
