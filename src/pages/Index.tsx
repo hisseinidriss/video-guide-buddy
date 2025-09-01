@@ -201,7 +201,7 @@ const Index = () => {
                 alt="ISDB Logo"
                 className="h-20 w-auto mx-auto mb-6 object-contain"
               />
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 IMDT How-To Videos for Microsoft Tools
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
