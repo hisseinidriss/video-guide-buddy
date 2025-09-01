@@ -48,11 +48,18 @@ export const SearchBox = ({ onSearch, onVideoSelect, videos = [] }: SearchBoxPro
   };
 
   const handleSuggestionClick = (suggestion: Video) => {
+    console.log('Suggestion clicked:', suggestion.title);
+    console.log('onVideoSelect available:', !!onVideoSelect);
+    
     setQuery(suggestion.title);
     setShowSuggestions(false);
+    setSelectedIndex(-1);
+    
     if (onVideoSelect) {
+      console.log('Calling onVideoSelect');
       onVideoSelect(suggestion);
     } else {
+      console.log('Calling onSearch');
       onSearch(suggestion.title);
     }
   };
@@ -88,6 +95,11 @@ export const SearchBox = ({ onSearch, onVideoSelect, videos = [] }: SearchBoxPro
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
+        // Don't hide if clicking on a suggestion
+        const target = event.target as Element;
+        if (target.closest('[data-suggestion]')) {
+          return;
+        }
         setShowSuggestions(false);
       }
     };
@@ -127,7 +139,12 @@ export const SearchBox = ({ onSearch, onVideoSelect, videos = [] }: SearchBoxPro
           {suggestions.map((suggestion, index) => (
             <button
               key={suggestion.id}
-              onClick={() => handleSuggestionClick(suggestion)}
+              type="button"
+              data-suggestion="true"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                handleSuggestionClick(suggestion);
+              }}
               className={`w-full text-left px-4 py-3 hover:bg-accent transition-colors border-b border-border last:border-b-0 ${
                 index === selectedIndex ? 'bg-accent' : ''
               }`}
