@@ -14,10 +14,11 @@ interface Video {
 
 interface SearchBoxProps {
   onSearch: (query: string) => void;
+  onVideoSelect?: (video: Video) => void;
   videos?: Video[];
 }
 
-export const SearchBox = ({ onSearch, videos = [] }: SearchBoxProps) => {
+export const SearchBox = ({ onSearch, onVideoSelect, videos = [] }: SearchBoxProps) => {
   const [query, setQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -48,8 +49,12 @@ export const SearchBox = ({ onSearch, videos = [] }: SearchBoxProps) => {
 
   const handleSuggestionClick = (suggestion: Video) => {
     setQuery(suggestion.title);
-    onSearch(suggestion.title);
     setShowSuggestions(false);
+    if (onVideoSelect) {
+      onVideoSelect(suggestion);
+    } else {
+      onSearch(suggestion.title);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -127,14 +132,8 @@ export const SearchBox = ({ onSearch, videos = [] }: SearchBoxProps) => {
                 index === selectedIndex ? 'bg-accent' : ''
               }`}
             >
-              <div className="font-medium text-card-foreground mb-1">
+              <div className="font-medium text-card-foreground">
                 {suggestion.title}
-              </div>
-              <div className="text-sm text-muted-foreground line-clamp-2">
-                {suggestion.description}
-              </div>
-              <div className="text-xs text-muted-foreground mt-1">
-                Duration: {suggestion.duration}
               </div>
             </button>
           ))}
