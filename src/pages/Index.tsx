@@ -202,10 +202,10 @@ const Index = () => {
                 className="h-20 w-auto mx-auto mb-6 object-contain"
               />
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                ISDB Knowledge Base
+                IMDT How-To Videos for Microsoft Tools
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Access comprehensive support resources and video tutorials
+                Step-by-step tutorials to simplify your work with Teams and beyond.
               </p>
             </div>
             
