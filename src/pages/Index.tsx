@@ -3,7 +3,7 @@ import { SearchBox } from "@/components/SearchBox";
 import { VideoResults } from "@/components/VideoResults";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { SettingsModal } from "@/components/SettingsModal";
-import isdbLogo from "@/assets/isdb-logo.png";
+const isdbLogo = "/lovable-uploads/f8270399-744b-432b-9607-4c62763dffdc.png";
 
 interface Video {
   id: string;
