@@ -151,7 +151,7 @@ const Index = () => {
   const [searchResults, setSearchResults] = useState<Video[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [showResults, setShowResults] = useState(false);
-  const [videoLocation, setVideoLocation] = useState("https://sample-videos.com/zip/10/mp4");
+  const [videoLocation, setVideoLocation] = useState("./videos");
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
