@@ -14,7 +14,7 @@ interface Video {
   videoUrl: string;
 }
 
-// Real ISDB video library from SharePoint
+// Real ISDB video library with Google Drive file IDs
 const mockVideos: Video[] = [
   {
     id: "1",
@@ -22,7 +22,7 @@ const mockVideos: Video[] = [
     description: "Learn how to create new teams using pre-built templates for different organizational needs and purposes.",
     duration: "3:24",
     thumbnail: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=225&fit=crop",
-    videoUrl: "Create a team with team templates.mp4"
+    videoUrl: "1occCV8QMNMaWSx9rohoE4iHmeTruVoDi"
   },
   {
     id: "2",
@@ -30,7 +30,7 @@ const mockVideos: Video[] = [
     description: "Step-by-step guide on joining Teams meetings from different devices and platforms.",
     duration: "4:15",
     thumbnail: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=225&fit=crop",
-    videoUrl: "How to Join a meeting.mp4"
+    videoUrl: "1_P1I_E_Gy3JqmBCPnpr0GTVeTDYJgqWr"
   },
   {
     id: "3",
@@ -38,7 +38,7 @@ const mockVideos: Video[] = [
     description: "Complete tutorial on accessing and participating in Microsoft Teams meetings effectively.",
     duration: "4:15",
     thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=225&fit=crop", 
-    videoUrl: "Join a Teams meeting.mp4"
+    videoUrl: "1mz2UfBg_1Km01lucuN21fvMirwDHHs-e"
   },
   {
     id: "4",
@@ -46,7 +46,7 @@ const mockVideos: Video[] = [
     description: "Learn how to initiate and manage voice and video calls in Microsoft Teams.",
     duration: "5:30",
     thumbnail: "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=400&h=225&fit=crop",
-    videoUrl: "Make Calls.mp4"
+    videoUrl: "1KFbHCEPdgZMoGJB4gFaGPYH1-n4fXcKt"
   },
   {
     id: "5", 
@@ -54,7 +54,7 @@ const mockVideos: Video[] = [
     description: "Comprehensive guide on scheduling, organizing, and controlling Teams meetings.",
     duration: "3:45",
     thumbnail: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=225&fit=crop",
-    videoUrl: "Manage meetings.mp4"
+    videoUrl: "1drBiEimMimITaX0Y-3jlm1l0NN_BEc8v"
   },
   {
     id: "6",
@@ -62,7 +62,7 @@ const mockVideos: Video[] = [
     description: "Learn how to efficiently broadcast messages across multiple Teams channels simultaneously.",
     duration: "2:30", 
     thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=225&fit=crop",
-    videoUrl: "Post a message to multiple channels.mp4"
+    videoUrl: "1oKKrfF-FAmqypOzNQVaxPZ86RQPcrBZL"
   },
   {
     id: "7",
@@ -70,7 +70,7 @@ const mockVideos: Video[] = [
     description: "Master the search functionality to quickly find specific messages and conversations.",
     duration: "3:20",
     thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop",
-    videoUrl: "Search and filter messages.mp4"
+    videoUrl: "1473MDnc2K1080HbdL4ks6w-WbjiUx-4U"
   },
   {
     id: "8", 
@@ -78,7 +78,7 @@ const mockVideos: Video[] = [
     description: "Discover how to locate team members, contacts, and shared files efficiently.",
     duration: "4:20",
     thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
-    videoUrl: "Search and filter people and files.mp4"
+    videoUrl: "14rIg8kbwj2WMSavUwW8ObPMe3S30etIy"
   },
   {
     id: "9",
@@ -86,7 +86,7 @@ const mockVideos: Video[] = [
     description: "Complete tutorial on finding and accessing shared files and documents in Teams.",
     duration: "4:50",
     thumbnail: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&h=225&fit=crop",
-    videoUrl: "Search and find Files.mp4"
+    videoUrl: "1yCdZ4wMa4vIlur7RDMiyJfJzBiMVwCBe"
   },
   {
     id: "10",
@@ -94,7 +94,7 @@ const mockVideos: Video[] = [
     description: "Learn the fundamentals of initiating calls and chat conversations in Teams.",
     duration: "3:35",
     thumbnail: "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=400&h=225&fit=crop", 
-    videoUrl: "Seeting up calls and Chat.mp4"
+    videoUrl: "1K-cqc2AgDm9RitFF1VFsWx81pmTPw1S9"
   },
   {
     id: "11",
@@ -102,7 +102,7 @@ const mockVideos: Video[] = [
     description: "Configure call delegation settings to have someone else handle your incoming calls.",
     duration: "2:15",
     thumbnail: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=225&fit=crop",
-    videoUrl: "Set up a delegate to take your calls.mp4"
+    videoUrl: "1_D_SjYcZNIQTLSL2A5n04QHq0mrv57c-"
   },
   {
     id: "12",
@@ -110,7 +110,7 @@ const mockVideos: Video[] = [
     description: "Master screen sharing features to present content effectively during Teams meetings.",
     duration: "1:45", 
     thumbnail: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=225&fit=crop",
-    videoUrl: "Show your screen during a meeting.mp4"
+    videoUrl: "1_a2IVsS_Wp5n8JD9L_Vehx0ZzqyndoAC"
   },
   {
     id: "13",
@@ -118,7 +118,7 @@ const mockVideos: Video[] = [
     description: "Learn how to upload, organize, and share files and documents with your team members.",
     duration: "4:50",
     thumbnail: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&h=225&fit=crop",
-    videoUrl: "Upload and share files.mp4"
+    videoUrl: "1pDasiVKlpCEQuu5a8npmEHlAuEH91h0D"
   },
   {
     id: "14", 
@@ -126,7 +126,7 @@ const mockVideos: Video[] = [
     description: "Complete guide on inviting and collaborating with external users and guest accounts.",
     duration: "3:25",
     thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
-    videoUrl: "Work with external guests.mp4"
+    videoUrl: "1PrTiCg12wC68g4rRcSQ-VqFLzd2VW8ai"
   },
   {
     id: "15",
@@ -134,7 +134,7 @@ const mockVideos: Video[] = [
     description: "Learn privacy and message management features including hiding conversations and deleting messages.",
     duration: "4:05",
     thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=225&fit=crop",
-    videoUrl: "Hide chats and delete messages.mp4"
+    videoUrl: "14KCZ7bZ7TBZZn-HGAn1zzk9Z3l5wfGwc"
   },
   {
     id: "16",
@@ -142,7 +142,7 @@ const mockVideos: Video[] = [
     description: "Comprehensive tutorial on creating and managing live events and broadcasts in Teams.",
     duration: "4:35",
     thumbnail: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=225&fit=crop",
-    videoUrl: "Live Event.mp4"
+    videoUrl: "1mV-WWqLDqYOf7_Ag1x0usvLz0iw5YfJi"
   }
 ];
 
