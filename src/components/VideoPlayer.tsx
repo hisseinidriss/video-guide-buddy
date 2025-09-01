@@ -107,13 +107,6 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
           <p className="text-muted-foreground leading-relaxed text-base">
             {video.description}
           </p>
-          <div className="mt-4 p-3 bg-muted/50 rounded-lg text-sm">
-            <strong>Video Location:</strong> {videoLocation}
-            <br />
-            <strong>Video File:</strong> {video.videoUrl}
-            <br />
-            <strong>Full Path:</strong> {getFullVideoPath(video.videoUrl)}
-          </div>
         </div>
       </Card>
     </div>

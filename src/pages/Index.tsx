@@ -19,7 +19,7 @@ const mockVideos: Video[] = [
   {
     id: "1",
     title: "Create a team with team templates",
-    description: "Learn how to create new teams using pre-built templates for different organizational needs and purposes.",
+    description: "This comprehensive tutorial walks you through the process of creating new Microsoft Teams with pre-built templates designed for different organizational needs. You'll learn how to select the right template for your team's purpose, whether it's for project management, department collaboration, or specific business functions. The video covers accessing team templates, customizing team settings, adding members, and configuring channels to match your workflow requirements.",
     duration: "3:24",
     thumbnail: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=225&fit=crop",
     videoUrl: "1occCV8QMNMaWSx9rohoE4iHmeTruVoDi"
@@ -27,7 +27,7 @@ const mockVideos: Video[] = [
   {
     id: "2",
     title: "How to Join a meeting", 
-    description: "Step-by-step guide on joining Teams meetings from different devices and platforms.",
+    description: "Learn the various methods to join Microsoft Teams meetings seamlessly from any device or platform. This tutorial covers joining meetings through calendar invitations, direct links, phone dial-in options, and the Teams app. You'll discover troubleshooting tips for common connection issues, audio and video setup, and how to join as a guest without a Teams account. Perfect for users who need to participate in meetings across different devices and scenarios.",
     duration: "4:15",
     thumbnail: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=225&fit=crop",
     videoUrl: "1_P1I_E_Gy3JqmBCPnpr0GTVeTDYJgqWr"
@@ -35,7 +35,7 @@ const mockVideos: Video[] = [
   {
     id: "3",
     title: "Join a Teams meeting",
-    description: "Complete tutorial on accessing and participating in Microsoft Teams meetings effectively.",
+    description: "A detailed guide focused specifically on accessing and participating effectively in Microsoft Teams meetings. This video demonstrates the step-by-step process of joining meetings from desktop, mobile, and web browsers. You'll learn about meeting lobby features, participant controls, chat functionality during meetings, and best practices for professional meeting etiquette. The tutorial also covers handling meeting permissions and what to do when facing access restrictions.",
     duration: "4:15",
     thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=225&fit=crop", 
     videoUrl: "1mz2UfBg_1Km01lucuN21fvMirwDHHs-e"
@@ -43,7 +43,7 @@ const mockVideos: Video[] = [
   {
     id: "4",
     title: "Make Calls",
-    description: "Learn how to initiate and manage voice and video calls in Microsoft Teams.",
+    description: "Master the art of initiating and managing both voice and video calls within Microsoft Teams. This comprehensive tutorial covers making one-on-one calls, group calls, and understanding the difference between calls and meetings. You'll learn how to start calls from chat, contacts, or the calling interface, manage call controls like mute, camera, and screen sharing during calls, and handle call forwarding and delegation. The video also includes tips for call quality optimization and managing call history.",
     duration: "5:30",
     thumbnail: "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=400&h=225&fit=crop",
     videoUrl: "1KFbHCEPdgZMoGJB4gFaGPYH1-n4fXcKt"
@@ -51,7 +51,7 @@ const mockVideos: Video[] = [
   {
     id: "5", 
     title: "Manage meetings",
-    description: "Comprehensive guide on scheduling, organizing, and controlling Teams meetings.",
+    description: "Take control of your Microsoft Teams meetings with this comprehensive management guide. Learn how to schedule meetings effectively, set up recurring meetings, and configure meeting options like lobby settings, attendee permissions, and recording capabilities. The tutorial covers managing meeting participants, controlling who can present, handling breakout rooms, and moderating discussions. You'll also discover advanced features like meeting policies, attendance reports, and post-meeting follow-up procedures.",
     duration: "3:45",
     thumbnail: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=225&fit=crop",
     videoUrl: "1drBiEimMimITaX0Y-3jlm1l0NN_BEc8v"
@@ -59,7 +59,7 @@ const mockVideos: Video[] = [
   {
     id: "6",
     title: "Post a message to multiple channels",
-    description: "Learn how to efficiently broadcast messages across multiple Teams channels simultaneously.",
+    description: "Discover efficient communication strategies by learning how to broadcast messages across multiple Teams channels simultaneously. This tutorial demonstrates the cross-posting feature, which allows you to share important announcements, updates, or information with multiple teams at once. You'll learn when to use this feature appropriately, how to maintain message consistency, and manage responses across different channels. The video also covers best practices for organization-wide communications and avoiding message spam.",
     duration: "2:30", 
     thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=225&fit=crop",
     videoUrl: "1oKKrfF-FAmqypOzNQVaxPZ86RQPcrBZL"
@@ -67,7 +67,7 @@ const mockVideos: Video[] = [
   {
     id: "7",
     title: "Search and filter messages",
-    description: "Master the search functionality to quickly find specific messages and conversations.",
+    description: "Become a Microsoft Teams search expert with this detailed tutorial on finding specific messages and conversations quickly. Learn advanced search techniques using keywords, filters by date, sender, and content type. The video covers searching within specific channels, chats, or across your entire Teams environment. You'll discover how to use search operators, save searches for frequently used queries, and organize search results effectively. Perfect for users who need to locate important information from extensive chat histories.",
     duration: "3:20",
     thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop",
     videoUrl: "1473MDnc2K1080HbdL4ks6w-WbjiUx-4U"
@@ -75,7 +75,7 @@ const mockVideos: Video[] = [
   {
     id: "8", 
     title: "Search and filter people and files",
-    description: "Discover how to locate team members, contacts, and shared files efficiently.",
+    description: "Maximize your productivity by mastering Teams' people and file search capabilities. This comprehensive guide shows you how to locate team members, external contacts, and shared documents efficiently. Learn to use the global search to find colleagues across your organization, access their contact information, and initiate conversations or meetings. The tutorial also covers advanced file search techniques, including searching by file type, modification date, and content within documents, making it easier to locate specific resources in large organizations.",
     duration: "4:20",
     thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
     videoUrl: "14rIg8kbwj2WMSavUwW8ObPMe3S30etIy"
@@ -83,7 +83,7 @@ const mockVideos: Video[] = [
   {
     id: "9",
     title: "Search and find Files", 
-    description: "Complete tutorial on finding and accessing shared files and documents in Teams.",
+    description: "Navigate the world of shared documents and files within Microsoft Teams with confidence. This tutorial provides an in-depth look at finding, accessing, and organizing files shared across teams and channels. You'll learn how to search through the Files tab, use advanced filters to narrow down results, and understand file permissions and sharing settings. The video covers working with different file types, version history, and collaborative editing features, ensuring you can efficiently manage and locate all your team's shared resources.",
     duration: "4:50",
     thumbnail: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&h=225&fit=crop",
     videoUrl: "1yCdZ4wMa4vIlur7RDMiyJfJzBiMVwCBe"
@@ -91,7 +91,7 @@ const mockVideos: Video[] = [
   {
     id: "10",
     title: "Setting up calls and Chat",
-    description: "Learn the fundamentals of initiating calls and chat conversations in Teams.",
+    description: "Establish effective communication foundations by learning the fundamentals of initiating calls and chat conversations in Microsoft Teams. This tutorial covers the basics of starting one-on-one and group chats, understanding chat vs. channel conversations, and transitioning between text and voice/video communications. You'll discover chat formatting options, emoji and reaction features, and how to organize conversations for maximum productivity. The video also includes setup tips for optimal call quality and managing notification preferences.",
     duration: "3:35",
     thumbnail: "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=400&h=225&fit=crop", 
     videoUrl: "1K-cqc2AgDm9RitFF1VFsWx81pmTPw1S9"
@@ -99,7 +99,7 @@ const mockVideos: Video[] = [
   {
     id: "11",
     title: "Set up a delegate to take your calls",
-    description: "Configure call delegation settings to have someone else handle your incoming calls.",
+    description: "Learn how to configure call delegation in Microsoft Teams to ensure important calls are never missed. This tutorial walks you through the process of designating trusted colleagues as call delegates who can answer calls on your behalf. You'll discover how to set up delegation permissions, configure call routing rules, and manage delegate notifications. The video covers scenarios where delegation is most useful, such as executive assistants handling calls for managers, and how both delegates and delegators can effectively manage the shared calling responsibilities.",
     duration: "2:15",
     thumbnail: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=225&fit=crop",
     videoUrl: "1_D_SjYcZNIQTLSL2A5n04QHq0mrv57c-"
@@ -107,7 +107,7 @@ const mockVideos: Video[] = [
   {
     id: "12",
     title: "Show your screen during a meeting",
-    description: "Master screen sharing features to present content effectively during Teams meetings.",
+    description: "Master the art of effective screen sharing in Microsoft Teams meetings with this comprehensive presentation tutorial. Learn how to share your entire desktop, specific applications, or individual browser tabs while maintaining privacy and security. The video covers advanced sharing options like sharing system audio, controlling what participants can see, and managing multiple shared screens. You'll also discover best practices for engaging presentations, including using annotation tools, managing participant interaction with shared content, and troubleshooting common screen sharing issues.",
     duration: "1:45", 
     thumbnail: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=225&fit=crop",
     videoUrl: "1_a2IVsS_Wp5n8JD9L_Vehx0ZzqyndoAC"
@@ -115,7 +115,7 @@ const mockVideos: Video[] = [
   {
     id: "13",
     title: "Upload and share files",
-    description: "Learn how to upload, organize, and share files and documents with your team members.",
+    description: "Transform your team collaboration by mastering file upload, organization, and sharing within Microsoft Teams. This detailed tutorial demonstrates how to upload documents to channels and chats, organize files in folders, and set appropriate sharing permissions. You'll learn about file version control, collaborative editing in real-time, and integrating with SharePoint and OneDrive. The video also covers sharing files with external users, managing file access permissions, and using Teams as a central hub for all your team's document collaboration needs.",
     duration: "4:50",
     thumbnail: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&h=225&fit=crop",
     videoUrl: "1pDasiVKlpCEQuu5a8npmEHlAuEH91h0D"
@@ -123,7 +123,7 @@ const mockVideos: Video[] = [
   {
     id: "14", 
     title: "Work with external guests",
-    description: "Complete guide on inviting and collaborating with external users and guest accounts.",
+    description: "Expand your collaboration beyond organizational boundaries by learning how to invite and work with external guests in Microsoft Teams. This comprehensive guide covers the entire guest user lifecycle, from sending invitations to managing guest permissions and access levels. You'll discover how to add external partners, clients, or vendors to your teams, configure appropriate security settings, and ensure smooth collaboration while maintaining organizational data protection. The tutorial includes best practices for guest user management and troubleshooting common external user access issues.",
     duration: "3:25",
     thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
     videoUrl: "1PrTiCg12wC68g4rRcSQ-VqFLzd2VW8ai"
@@ -131,7 +131,7 @@ const mockVideos: Video[] = [
   {
     id: "15",
     title: "Hide chats and delete messages",
-    description: "Learn privacy and message management features including hiding conversations and deleting messages.",
+    description: "Take control of your Teams conversation privacy and organization with this essential tutorial on chat management and message control. Learn how to hide chat conversations to declutter your interface while maintaining access to important information. The video demonstrates various message deletion options, including removing messages you've sent, managing conversation history, and understanding the difference between hiding and permanently deleting content. You'll also discover privacy features, conversation archiving, and strategies for maintaining a clean, organized chat environment while preserving important communications.",
     duration: "4:05",
     thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=225&fit=crop",
     videoUrl: "14KCZ7bZ7TBZZn-HGAn1zzk9Z3l5wfGwc"
@@ -139,7 +139,7 @@ const mockVideos: Video[] = [
   {
     id: "16",
     title: "Live Event", 
-    description: "Comprehensive tutorial on creating and managing live events and broadcasts in Teams.",
+    description: "Unlock the power of large-scale communication with Microsoft Teams Live Events. This comprehensive tutorial guides you through creating, managing, and broadcasting live events to large audiences within and outside your organization. Learn how to set up professional live streams, manage presenters and producers, configure audience interaction settings, and monitor event analytics. The video covers everything from initial event planning and technical setup to post-event recording distribution and audience engagement strategies, making it perfect for corporate communications, training sessions, and organization-wide announcements.",
     duration: "4:35",
     thumbnail: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=225&fit=crop",
     videoUrl: "1mV-WWqLDqYOf7_Ag1x0usvLz0iw5YfJi"
