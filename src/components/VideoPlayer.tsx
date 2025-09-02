@@ -75,7 +75,8 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
                 width="100%"
                 height="100%"
                 className="absolute inset-0"
-                allow="autoplay"
+                allow="autoplay; fullscreen"
+                allowFullScreen
                 title={video.title}
                 onError={() => {
                   console.error('Google Drive video failed to load');
