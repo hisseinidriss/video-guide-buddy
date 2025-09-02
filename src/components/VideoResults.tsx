@@ -1,8 +1,5 @@
-import { Play, Clock, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
+import { Play, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useState, useCallback } from "react";
-import { toast } from "sonner";
 
 interface Video {
   id: string;
@@ -21,71 +18,6 @@ interface VideoResultsProps {
 }
 
 export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation }: VideoResultsProps) => {
-  const [videoInteractions, setVideoInteractions] = useState<Record<string, { liked: boolean; disliked: boolean; likes: number; dislikes: number }>>({});
-
-  const handleLike = useCallback((videoId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setVideoInteractions(prev => {
-      const current = prev[videoId] || { liked: false, disliked: false, likes: 0, dislikes: 0 };
-      const wasLiked = current.liked;
-      const wasDisliked = current.disliked;
-      
-      return {
-        ...prev,
-        [videoId]: {
-          ...current,
-          liked: !wasLiked,
-          disliked: false,
-          likes: current.likes + (wasLiked ? -1 : 1) + (wasDisliked ? 1 : 0),
-          dislikes: wasDisliked ? current.dislikes - 1 : current.dislikes
-        }
-      };
-    });
-  }, []);
-
-  const handleDislike = useCallback((videoId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setVideoInteractions(prev => {
-      const current = prev[videoId] || { liked: false, disliked: false, likes: 0, dislikes: 0 };
-      const wasLiked = current.liked;
-      const wasDisliked = current.disliked;
-      
-      return {
-        ...prev,
-        [videoId]: {
-          ...current,
-          liked: false,
-          disliked: !wasDisliked,
-          likes: wasLiked ? current.likes - 1 : current.likes,
-          dislikes: current.dislikes + (wasDisliked ? -1 : 1) + (wasLiked ? 1 : 0)
-        }
-      };
-    });
-  }, []);
-
-  const handleShare = useCallback(async (video: Video, e: React.MouseEvent) => {
-    e.stopPropagation();
-    
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: video.title,
-          text: video.description,
-          url: window.location.href
-        });
-      } catch (err) {
-        // User cancelled sharing
-      }
-    } else {
-      // Fallback to clipboard
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        toast.success("Link copied to clipboard!");
-      } catch (err) {
-        toast.error("Failed to copy link");
-      }
-    }
-  }, []);
 
   if (videos.length === 0 && searchQuery) {
     return (
@@ -114,7 +46,6 @@ export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation
       
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {videos.map((video) => {
-          const interactions = videoInteractions[video.id] || { liked: false, disliked: false, likes: 0, dislikes: 0 };
           
           return (
             <Card
@@ -154,40 +85,6 @@ export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation
                   {video.description}
                 </p>
                 
-                <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
-                  <div className="flex items-center gap-1">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className={`h-8 px-2 ${interactions.liked ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-primary'}`}
-                      onClick={(e) => handleLike(video.id, e)}
-                    >
-                      <ThumbsUp className="h-4 w-4" />
-                      {interactions.likes > 0 && (
-                        <span className="ml-1 text-xs">{interactions.likes}</span>
-                      )}
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className={`h-8 px-2 ${interactions.disliked ? 'text-destructive bg-destructive/10' : 'text-muted-foreground hover:text-destructive'}`}
-                      onClick={(e) => handleDislike(video.id, e)}
-                    >
-                      <ThumbsDown className="h-4 w-4" />
-                      {interactions.dislikes > 0 && (
-                        <span className="ml-1 text-xs">{interactions.dislikes}</span>
-                      )}
-                    </Button>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 px-2 text-muted-foreground hover:text-primary"
-                    onClick={(e) => handleShare(video, e)}
-                  >
-                    <Share2 className="h-4 w-4" />
-                  </Button>
-                </div>
               </div>
             </Card>
           );

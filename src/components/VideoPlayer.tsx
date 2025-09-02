@@ -1,6 +1,8 @@
-import { X, ArrowLeft } from "lucide-react";
+import { X, ArrowLeft, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useState, useCallback } from "react";
+import { toast } from "sonner";
 
 interface Video {
   id: string;
@@ -19,6 +21,59 @@ interface VideoPlayerProps {
 }
 
 export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlayerProps) => {
+  const [videoInteractions, setVideoInteractions] = useState<{ liked: boolean; disliked: boolean; likes: number; dislikes: number }>({ liked: false, disliked: false, likes: 0, dislikes: 0 });
+
+  const handleLike = useCallback(() => {
+    setVideoInteractions(prev => {
+      const wasLiked = prev.liked;
+      const wasDisliked = prev.disliked;
+      
+      return {
+        ...prev,
+        liked: !wasLiked,
+        disliked: false,
+        likes: prev.likes + (wasLiked ? -1 : 1) + (wasDisliked ? 1 : 0),
+        dislikes: wasDisliked ? prev.dislikes - 1 : prev.dislikes
+      };
+    });
+  }, []);
+
+  const handleDislike = useCallback(() => {
+    setVideoInteractions(prev => {
+      const wasLiked = prev.liked;
+      const wasDisliked = prev.disliked;
+      
+      return {
+        ...prev,
+        liked: false,
+        disliked: !wasDisliked,
+        likes: wasLiked ? prev.likes - 1 : prev.likes,
+        dislikes: prev.dislikes + (wasDisliked ? -1 : 1) + (wasLiked ? 1 : 0)
+      };
+    });
+  }, []);
+
+  const handleShare = useCallback(async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: video.title,
+          text: video.description,
+          url: window.location.href
+        });
+      } catch (err) {
+        // User cancelled sharing
+      }
+    } else {
+      // Fallback to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.success("Link copied to clipboard!");
+      } catch (err) {
+        toast.error("Failed to copy link");
+      }
+    }
+  }, [video.title, video.description]);
   // Construct full video path for different hosting services
   const getFullVideoPath = (filename: string) => {
     if (videoLocation.includes('drive.google.com')) {
@@ -105,9 +160,45 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
           <h2 className="text-2xl font-semibold text-card-foreground mb-4">
             {video.title}
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-base">
+          <p className="text-muted-foreground leading-relaxed text-base mb-6">
             {video.description}
           </p>
+          
+          <div className="flex items-center gap-4 pt-4 border-t border-border">
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`h-10 px-4 ${videoInteractions.liked ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-primary'}`}
+              onClick={handleLike}
+            >
+              <ThumbsUp className="h-5 w-5 mr-2" />
+              Like
+              {videoInteractions.likes > 0 && (
+                <span className="ml-2 text-sm">({videoInteractions.likes})</span>
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`h-10 px-4 ${videoInteractions.disliked ? 'text-destructive bg-destructive/10' : 'text-muted-foreground hover:text-destructive'}`}
+              onClick={handleDislike}
+            >
+              <ThumbsDown className="h-5 w-5 mr-2" />
+              Dislike
+              {videoInteractions.dislikes > 0 && (
+                <span className="ml-2 text-sm">({videoInteractions.dislikes})</span>
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-10 px-4 text-muted-foreground hover:text-primary"
+              onClick={handleShare}
+            >
+              <Share2 className="h-5 w-5 mr-2" />
+              Share
+            </Button>
+          </div>
         </div>
       </Card>
     </div>
