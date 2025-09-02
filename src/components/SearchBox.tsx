@@ -116,7 +116,7 @@ export const SearchBox = ({ onSearch, onVideoSelect, videos = [] }: SearchBoxPro
           <Input
             ref={inputRef}
             type="text"
-            placeholder="Ask a question about your issue..."
+            placeholder='Search for Microsoft Teams topics like "join meeting", "make calls", "share files", or "manage meetings"'
             value={query}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}

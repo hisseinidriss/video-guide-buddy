@@ -210,10 +210,6 @@ const Index = () => {
             </div>
             
             <SearchBox onSearch={handleSearch} onVideoSelect={handleVideoSelect} videos={mockVideos} />
-            
-            <div className="mt-8 text-sm text-muted-foreground">
-              Search for Microsoft Teams topics like "join meeting", "make calls", "share files", or "manage meetings"
-            </div>
           </div>
         ) : (
           // Results Page
