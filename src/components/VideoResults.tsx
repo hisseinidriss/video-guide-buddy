@@ -81,7 +81,7 @@ export const VideoResults = ({ videos, onVideoSelect, searchQuery, videoLocation
                 >
                   {video.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                <p className="text-sm text-muted-foreground mt-2 line-clamp-3">
                   {video.description}
                 </p>
                 
