@@ -250,6 +250,43 @@ const Index = () => {
             </div>
             
             <SearchBox onSearch={handleSearch} onVideoSelect={handleVideoSelect} videos={mockVideos} />
+            
+            {/* Most Requested Videos Section */}
+            <div className="mt-12 max-w-6xl mx-auto">
+              <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
+                Most Requested Videos
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                {mockVideos.slice(-5).map((video) => (
+                  <div
+                    key={video.id}
+                    className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                    onClick={() => handleVideoSelect(video)}
+                  >
+                    <div className="aspect-video relative overflow-hidden">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://images.unsplash.com/photo-1611347548536-3d79c2136bb5?w=400&h=225&fit=crop';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200" />
+                      <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                        {video.duration}
+                      </div>
+                    </div>
+                    <div className="p-3">
+                      <h3 className="font-medium text-sm text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                        {video.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ) : (
           // Results Page
