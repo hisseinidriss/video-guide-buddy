@@ -149,7 +149,7 @@ const mockVideos: Video[] = [
     title: "How to Record a short video Clip in Microsoft Teams Chat",
     description: "Learn how to create and share quick video clips directly within Microsoft Teams chat conversations. This tutorial shows you how to record short video messages, add them to your chat threads, and use this feature for more engaging and personal communication with your team members.",
     duration: "3:45",
-    thumbnail: "https://images.unsplash.com/photo-1611347548536-3d79c2136bb5?w=400&h=225&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=400&h=225&fit=crop",
     videoUrl: "1QJBEBm2FHfYCGFQ984_cZrKYr_pZFi5B"
   },
   {
