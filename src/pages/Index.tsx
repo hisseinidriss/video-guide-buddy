@@ -143,6 +143,46 @@ const mockVideos: Video[] = [
     duration: "4:35",
     thumbnail: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=225&fit=crop",
     videoUrl: "1mV-WWqLDqYOf7_Ag1x0usvLz0iw5YfJi"
+  },
+  {
+    id: "17",
+    title: "How to Record a short video Clip in Microsoft Teams Chat",
+    description: "Learn how to create and share quick video clips directly within Microsoft Teams chat conversations. This tutorial shows you how to record short video messages, add them to your chat threads, and use this feature for more engaging and personal communication with your team members.",
+    duration: "3:45",
+    thumbnail: "https://images.unsplash.com/photo-1611347548536-3d79c2136bb5?w=400&h=225&fit=crop",
+    videoUrl: "placeholder-video-id-17"
+  },
+  {
+    id: "18", 
+    title: "How to join a Microsoft Teams meeting with an avatar",
+    description: "Discover how to use Microsoft Teams avatar feature to join meetings with a personalized digital representation. Learn how to create, customize, and use avatars for a more engaging meeting experience while maintaining privacy and professionalism.",
+    duration: "4:20",
+    thumbnail: "https://images.unsplash.com/photo-1600267185393-e158a98703de?w=400&h=225&fit=crop",
+    videoUrl: "placeholder-video-id-18"
+  },
+  {
+    id: "19",
+    title: "How to use one-click instant polls in Microsoft Teams",
+    description: "Master the art of creating quick polls and surveys within Microsoft Teams meetings and chats. Learn how to set up instant polls, gather real-time feedback from participants, and analyze poll results to make data-driven decisions during your team collaborations.",
+    duration: "3:30",
+    thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop", 
+    videoUrl: "placeholder-video-id-19"
+  },
+  {
+    id: "20",
+    title: "How to Use Loop Components in Microsoft Teams Chat",
+    description: "Explore Microsoft Loop components integration within Teams chat for enhanced collaboration. Learn how to create, share, and collaborate on Loop components like tables, lists, and notes directly in your chat conversations for seamless teamwork.",
+    duration: "4:10",
+    thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
+    videoUrl: "placeholder-video-id-20"
+  },
+  {
+    id: "21",
+    title: "How to Share System Audio in Microsoft Teams", 
+    description: "Learn how to share your computer's system audio during Microsoft Teams meetings and screen sharing sessions. This tutorial covers audio sharing settings, troubleshooting common audio issues, and ensuring clear sound transmission for presentations and media playback.",
+    duration: "3:55",
+    thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=225&fit=crop",
+    videoUrl: "placeholder-video-id-21"
   }
 ];
 
