@@ -150,7 +150,7 @@ const mockVideos: Video[] = [
     description: "Learn how to create and share quick video clips directly within Microsoft Teams chat conversations. This tutorial shows you how to record short video messages, add them to your chat threads, and use this feature for more engaging and personal communication with your team members.",
     duration: "3:45",
     thumbnail: "https://images.unsplash.com/photo-1611347548536-3d79c2136bb5?w=400&h=225&fit=crop",
-    videoUrl: "placeholder-video-id-17"
+    videoUrl: "1QJBEBm2FHfYCGFQ984_cZrKYr_pZFi5B"
   },
   {
     id: "18", 
@@ -158,7 +158,7 @@ const mockVideos: Video[] = [
     description: "Discover how to use Microsoft Teams avatar feature to join meetings with a personalized digital representation. Learn how to create, customize, and use avatars for a more engaging meeting experience while maintaining privacy and professionalism.",
     duration: "4:20",
     thumbnail: "https://images.unsplash.com/photo-1600267185393-e158a98703de?w=400&h=225&fit=crop",
-    videoUrl: "placeholder-video-id-18"
+    videoUrl: "1ubKviQn-KT8L8yZ8gmMvSUA_YFbqAYN-"
   },
   {
     id: "19",
@@ -166,7 +166,7 @@ const mockVideos: Video[] = [
     description: "Master the art of creating quick polls and surveys within Microsoft Teams meetings and chats. Learn how to set up instant polls, gather real-time feedback from participants, and analyze poll results to make data-driven decisions during your team collaborations.",
     duration: "3:30",
     thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop", 
-    videoUrl: "placeholder-video-id-19"
+    videoUrl: "1fum9RdLzfLv1jPqEBNUw-nMCmrakB77G"
   },
   {
     id: "20",
@@ -174,7 +174,7 @@ const mockVideos: Video[] = [
     description: "Explore Microsoft Loop components integration within Teams chat for enhanced collaboration. Learn how to create, share, and collaborate on Loop components like tables, lists, and notes directly in your chat conversations for seamless teamwork.",
     duration: "4:10",
     thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
-    videoUrl: "placeholder-video-id-20"
+    videoUrl: "1yR-QQ1GZO2HQID1J9nLAGBsBZonCD98M"
   },
   {
     id: "21",
@@ -182,7 +182,7 @@ const mockVideos: Video[] = [
     description: "Learn how to share your computer's system audio during Microsoft Teams meetings and screen sharing sessions. This tutorial covers audio sharing settings, troubleshooting common audio issues, and ensuring clear sound transmission for presentations and media playback.",
     duration: "3:55",
     thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=225&fit=crop",
-    videoUrl: "placeholder-video-id-21"
+    videoUrl: "1foNEb-HCDPjbBDiPy02fhF5W2P_4FLAY"
   }
 ];
 
