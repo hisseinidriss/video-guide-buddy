@@ -242,7 +242,7 @@ const Index = () => {
                 className="h-20 w-auto mx-auto mb-6 object-contain"
               />
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                IMDT Microsoft 365 Knowledge Hub
+                MS Teams Meeting & VC Guidance (IMDT)
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Step-by-step tutorials for Teams, Outlook, SharePoint, and more.
