@@ -252,7 +252,7 @@ const Index = () => {
             <SearchBox onSearch={handleSearch} onVideoSelect={handleVideoSelect} videos={mockVideos} />
             
             {/* Most Requested Videos Section */}
-            <div className="mt-16 max-w-6xl mx-auto">
+            <div className="mt-24 max-w-6xl mx-auto">
               <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
                 Most Viewed Videos
               </h2>
