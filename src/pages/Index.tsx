@@ -45,7 +45,7 @@ const mockVideos: Video[] = [
     title: "Make Calls",
     description: "Master the art of initiating and managing both voice and video calls within Microsoft Teams. This comprehensive tutorial covers making one-on-one calls, group calls, and understanding the difference between calls and meetings. You'll learn how to start calls from chat, contacts, or the calling interface, manage call controls like mute, camera, and screen sharing during calls, and handle call forwarding and delegation. The video also includes tips for call quality optimization and managing call history.",
     duration: "5:30",
-    thumbnail: "https://images.unsplash.com/photo-1596126094147-b4f5b7bb9b3c?w=400&h=225&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=225&fit=crop",
     videoUrl: "1KFbHCEPdgZMoGJB4gFaGPYH1-n4fXcKt"
   },
   {
