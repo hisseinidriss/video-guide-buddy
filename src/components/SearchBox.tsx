@@ -7,7 +7,7 @@ interface Video {
   id: string;
   title: string;
   description: string;
-  steps: string[];
+  steps: string[] | { text: string; timestamp: number }[];
   duration: string;
   thumbnail: string;
   videoUrl: string;

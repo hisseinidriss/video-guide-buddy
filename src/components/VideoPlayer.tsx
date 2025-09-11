@@ -8,7 +8,7 @@ interface Video {
   id: string;
   title: string;
   description: string;
-  steps: string[];
+  steps: string[] | { text: string; timestamp: number }[];
   duration: string;
   thumbnail: string;
   videoUrl: string;
@@ -171,17 +171,41 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
               Step-by-Step Instructions
             </h3>
             <div className="bg-muted/30 rounded-lg p-4">
-              <ol className="space-y-2">
-                {video.steps.map((step, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
-                      {index + 1}
-                    </span>
-                    <span className="text-muted-foreground leading-relaxed">
-                      {step}
-                    </span>
-                  </li>
-                ))}
+              <ol className="space-y-3">
+                {video.steps.map((step, index) => {
+                  // Handle both old format (string[]) and new format ({ text: string; timestamp: number }[])
+                  const isNewFormat = typeof step === 'object' && step !== null && 'text' in step;
+                  const stepText = isNewFormat ? step.text : step;
+                  const stepTimestamp = isNewFormat ? step.timestamp : 0;
+                  
+                  return (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-7 h-7 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                        {index + 1}
+                      </span>
+                      <div className="flex-1">
+                        {isNewFormat ? (
+                          <button 
+                            className="text-left text-muted-foreground leading-relaxed hover:text-primary transition-colors cursor-pointer group flex items-start gap-2 w-full"
+                            onClick={() => {
+                              // For Google Drive videos, show timestamp info
+                              toast.info(`Jump to ${Math.floor(stepTimestamp / 60)}:${(stepTimestamp % 60).toString().padStart(2, '0')}`);
+                            }}
+                          >
+                            <span className="flex-1">{stepText}</span>
+                            <span className="text-xs text-primary/70 opacity-0 group-hover:opacity-100 transition-opacity bg-primary/10 px-2 py-1 rounded">
+                              {Math.floor(stepTimestamp / 60)}:{(stepTimestamp % 60).toString().padStart(2, '0')}
+                            </span>
+                          </button>
+                        ) : (
+                          <span className="text-muted-foreground leading-relaxed">
+                            {stepText}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
               </ol>
             </div>
           </div>
