@@ -85,19 +85,14 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
     }
   }, [video.title, video.description]);
   // Construct full video path for different hosting services
-  const getFullVideoPath = (filename: string, timestamp?: number) => {
+  const getFullVideoPath = (filename: string) => {
     if (videoLocation.includes('drive.google.com')) {
       // For Google Drive, expect the filename to be a file ID or full embed URL
       if (filename.includes('drive.google.com')) {
         return filename; // Already a full Google Drive URL
       } else {
         // Assume filename is a Google Drive file ID
-        const baseUrl = `https://drive.google.com/file/d/${filename}/preview`;
-        if (timestamp) {
-          // Google Drive doesn't support direct timestamp URLs, but we can try with the t parameter
-          return `${baseUrl}?t=${timestamp}s`;
-        }
-        return baseUrl;
+        return `https://drive.google.com/file/d/${filename}/preview`;
       }
     } else {
       // For other services (GitHub, CDN, etc.)
@@ -108,13 +103,17 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
   };
 
   const jumpToTimestamp = useCallback((timestamp: number) => {
+    const minutes = Math.floor(timestamp / 60);
+    const seconds = (timestamp % 60).toString().padStart(2, '0');
+    const timeString = `${minutes}:${seconds}`;
+    
     if (videoLocation.includes('drive.google.com')) {
-      // For Google Drive videos, we need to reload the iframe with timestamp
-      const newUrl = getFullVideoPath(video.videoUrl, timestamp);
-      setCurrentVideoUrl(newUrl);
+      // Google Drive videos don't support URL timestamp jumping
+      // Show user-friendly message with the timestamp to seek to manually
       toast({
-        title: "Jumping to timestamp",
-        description: `Seeking to ${Math.floor(timestamp / 60)}:${(timestamp % 60).toString().padStart(2, '0')}`,
+        title: "Seek to timestamp manually",
+        description: `Please manually seek to ${timeString} in the video player`,
+        duration: 4000,
       });
     } else {
       // For regular HTML5 videos, seek directly
@@ -122,11 +121,11 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
         videoRef.current.currentTime = timestamp;
         toast({
           title: "Jumped to timestamp",
-          description: `Now at ${Math.floor(timestamp / 60)}:${(timestamp % 60).toString().padStart(2, '0')}`,
+          description: `Now at ${timeString}`,
         });
       }
     }
-  }, [video.videoUrl, videoLocation]);
+  }, [video.videoUrl, videoLocation, toast]);
 
   // Initialize the video URL
   useState(() => {
@@ -134,7 +133,7 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
   });
 
   // Debug: Log the constructed path
-  console.log('Video path:', currentVideoUrl);
+  console.log('Video path:', getFullVideoPath(video.videoUrl));
   console.log('Video location setting:', videoLocation);
 
   return (
@@ -168,14 +167,13 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
               // Google Drive embed
               <iframe
                 ref={iframeRef}
-                src={currentVideoUrl}
+                src={getFullVideoPath(video.videoUrl)}
                 width="100%"
                 height="100%"
                 className="absolute inset-0"
                 allow="autoplay; fullscreen"
                 allowFullScreen
                 title={video.title}
-                key={currentVideoUrl} // Force re-render when URL changes
                 onError={() => {
                   console.error('Google Drive video failed to load');
                 }}
@@ -189,11 +187,11 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
                 poster={video.thumbnail}
                 preload="metadata"
                 onError={(e) => {
-                  console.error('Video failed to load:', currentVideoUrl);
+                  console.error('Video failed to load:', getFullVideoPath(video.videoUrl));
                   console.error('Video error:', e);
                 }}
               >
-                <source src={currentVideoUrl} type="video/mp4" />
+                <source src={getFullVideoPath(video.videoUrl)} type="video/mp4" />
                 Your browser does not support the video tag or the video file cannot be found.
               </video>
             )}
@@ -233,8 +231,8 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
                             onClick={() => jumpToTimestamp(stepTimestamp)}
                           >
                             <span className="flex-1">{stepText}</span>
-                            <span className="text-xs text-primary/70 opacity-0 group-hover:opacity-100 transition-opacity bg-primary/10 px-2 py-1 rounded">
-                              {Math.floor(stepTimestamp / 60)}:{(stepTimestamp % 60).toString().padStart(2, '0')}
+                            <span className="text-xs text-primary/70 opacity-0 group-hover:opacity-100 transition-opacity bg-primary/10 px-2 py-1 rounded flex items-center gap-1">
+                              🕒 {Math.floor(stepTimestamp / 60)}:{(stepTimestamp % 60).toString().padStart(2, '0')}
                             </span>
                           </button>
                         ) : (
