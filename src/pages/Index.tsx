@@ -246,13 +246,13 @@ const Index = () => {
             
             <SearchBox onSearch={handleSearch} onVideoSelect={handleVideoSelect} videos={mockVideos} />
             
-            {/* Most Requested Videos Section */}
+            {/* All Videos Section */}
             <div className="mt-24 max-w-6xl mx-auto">
               <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
-                Most Viewed Videos
+                Video Library
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                {mockVideos.slice(-5).map((video) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {mockVideos.map((video) => (
                   <div
                     key={video.id}
                     className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
