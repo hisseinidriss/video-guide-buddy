@@ -45,7 +45,7 @@ const mockVideos: Video[] = [
     title: "Make Calls",
     description: "Master the art of initiating and managing both voice and video calls within Microsoft Teams. This comprehensive tutorial covers making one-on-one calls, group calls, and understanding the difference between calls and meetings. You'll learn how to start calls from chat, contacts, or the calling interface, manage call controls like mute, camera, and screen sharing during calls, and handle call forwarding and delegation. The video also includes tips for call quality optimization and managing call history.",
     duration: "5:30",
-    thumbnail: "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=400&h=225&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1596126094147-b4f5b7bb9b3c?w=400&h=225&fit=crop",
     videoUrl: "1KFbHCEPdgZMoGJB4gFaGPYH1-n4fXcKt"
   },
   {
@@ -93,7 +93,7 @@ const mockVideos: Video[] = [
     title: "Setting up calls and Chat",
     description: "Establish effective communication foundations by learning the fundamentals of initiating calls and chat conversations in Microsoft Teams. This tutorial covers the basics of starting one-on-one and group chats, understanding chat vs. channel conversations, and transitioning between text and voice/video communications. You'll discover chat formatting options, emoji and reaction features, and how to organize conversations for maximum productivity. The video also includes setup tips for optimal call quality and managing notification preferences.",
     duration: "3:35",
-    thumbnail: "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=400&h=225&fit=crop", 
+    thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=225&fit=crop", 
     videoUrl: "1K-cqc2AgDm9RitFF1VFsWx81pmTPw1S9"
   },
   {
