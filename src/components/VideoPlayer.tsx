@@ -1,8 +1,8 @@
 import { X, ArrowLeft, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useState, useCallback } from "react";
-import { toast } from "sonner";
+import { useState, useCallback, useRef } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 interface Video {
   id: string;
@@ -23,6 +23,10 @@ interface VideoPlayerProps {
 
 export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlayerProps) => {
   const [videoInteractions, setVideoInteractions] = useState<{ liked: boolean; disliked: boolean; likes: number; dislikes: number }>({ liked: false, disliked: false, likes: 0, dislikes: 0 });
+  const [currentVideoUrl, setCurrentVideoUrl] = useState<string>('');
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { toast } = useToast();
 
   const handleLike = useCallback(() => {
     setVideoInteractions(prev => {
@@ -69,21 +73,31 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
       // Fallback to clipboard
       try {
         await navigator.clipboard.writeText(window.location.href);
-        toast.success("Link copied to clipboard!");
+        toast({
+          title: "Link copied to clipboard!",
+        });
       } catch (err) {
-        toast.error("Failed to copy link");
+        toast({
+          title: "Failed to copy link",
+          variant: "destructive",
+        });
       }
     }
   }, [video.title, video.description]);
   // Construct full video path for different hosting services
-  const getFullVideoPath = (filename: string) => {
+  const getFullVideoPath = (filename: string, timestamp?: number) => {
     if (videoLocation.includes('drive.google.com')) {
       // For Google Drive, expect the filename to be a file ID or full embed URL
       if (filename.includes('drive.google.com')) {
         return filename; // Already a full Google Drive URL
       } else {
         // Assume filename is a Google Drive file ID
-        return `https://drive.google.com/file/d/${filename}/preview`;
+        const baseUrl = `https://drive.google.com/file/d/${filename}/preview`;
+        if (timestamp) {
+          // Google Drive doesn't support direct timestamp URLs, but we can try with the t parameter
+          return `${baseUrl}?t=${timestamp}s`;
+        }
+        return baseUrl;
       }
     } else {
       // For other services (GitHub, CDN, etc.)
@@ -93,8 +107,34 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
     }
   };
 
+  const jumpToTimestamp = useCallback((timestamp: number) => {
+    if (videoLocation.includes('drive.google.com')) {
+      // For Google Drive videos, we need to reload the iframe with timestamp
+      const newUrl = getFullVideoPath(video.videoUrl, timestamp);
+      setCurrentVideoUrl(newUrl);
+      toast({
+        title: "Jumping to timestamp",
+        description: `Seeking to ${Math.floor(timestamp / 60)}:${(timestamp % 60).toString().padStart(2, '0')}`,
+      });
+    } else {
+      // For regular HTML5 videos, seek directly
+      if (videoRef.current) {
+        videoRef.current.currentTime = timestamp;
+        toast({
+          title: "Jumped to timestamp",
+          description: `Now at ${Math.floor(timestamp / 60)}:${(timestamp % 60).toString().padStart(2, '0')}`,
+        });
+      }
+    }
+  }, [video.videoUrl, videoLocation]);
+
+  // Initialize the video URL
+  useState(() => {
+    setCurrentVideoUrl(getFullVideoPath(video.videoUrl));
+  });
+
   // Debug: Log the constructed path
-  console.log('Video path:', getFullVideoPath(video.videoUrl));
+  console.log('Video path:', currentVideoUrl);
   console.log('Video location setting:', videoLocation);
 
   return (
@@ -127,13 +167,15 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
             {videoLocation.includes('drive.google.com') ? (
               // Google Drive embed
               <iframe
-                src={getFullVideoPath(video.videoUrl)}
+                ref={iframeRef}
+                src={currentVideoUrl}
                 width="100%"
                 height="100%"
                 className="absolute inset-0"
                 allow="autoplay; fullscreen"
                 allowFullScreen
                 title={video.title}
+                key={currentVideoUrl} // Force re-render when URL changes
                 onError={() => {
                   console.error('Google Drive video failed to load');
                 }}
@@ -141,16 +183,17 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
             ) : (
               // Fallback video player
               <video
+                ref={videoRef}
                 controls
                 className="w-full h-full"
                 poster={video.thumbnail}
                 preload="metadata"
                 onError={(e) => {
-                  console.error('Video failed to load:', getFullVideoPath(video.videoUrl));
+                  console.error('Video failed to load:', currentVideoUrl);
                   console.error('Video error:', e);
                 }}
               >
-                <source src={getFullVideoPath(video.videoUrl)} type="video/mp4" />
+                <source src={currentVideoUrl} type="video/mp4" />
                 Your browser does not support the video tag or the video file cannot be found.
               </video>
             )}
@@ -187,10 +230,7 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
                         {isNewFormat ? (
                           <button 
                             className="text-left text-muted-foreground leading-relaxed hover:text-primary transition-colors cursor-pointer group flex items-start gap-2 w-full"
-                            onClick={() => {
-                              // For Google Drive videos, show timestamp info
-                              toast.info(`Jump to ${Math.floor(stepTimestamp / 60)}:${(stepTimestamp % 60).toString().padStart(2, '0')}`);
-                            }}
+                            onClick={() => jumpToTimestamp(stepTimestamp)}
                           >
                             <span className="flex-1">{stepText}</span>
                             <span className="text-xs text-primary/70 opacity-0 group-hover:opacity-100 transition-opacity bg-primary/10 px-2 py-1 rounded">
