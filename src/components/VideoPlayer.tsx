@@ -8,6 +8,7 @@ interface Video {
   id: string;
   title: string;
   description: string;
+  steps: string[];
   duration: string;
   thumbnail: string;
   videoUrl: string;
@@ -163,6 +164,27 @@ export const VideoPlayer = ({ video, onClose, onBack, videoLocation }: VideoPlay
           <p className="text-muted-foreground leading-relaxed text-base mb-6">
             {video.description}
           </p>
+
+          {/* Step-by-step Instructions */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-card-foreground mb-3">
+              Step-by-Step Instructions
+            </h3>
+            <div className="bg-muted/30 rounded-lg p-4">
+              <ol className="space-y-2">
+                {video.steps.map((step, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                      {index + 1}
+                    </span>
+                    <span className="text-muted-foreground leading-relaxed">
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
           
           <div className="flex items-center gap-4 pt-4 border-t border-border">
             <Button
