@@ -265,7 +265,7 @@ const Index = () => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = 'https://images.unsplash.com/photo-1611347548536-3d79c2136bb5?w=400&h=225&fit=crop';
+                          target.src = `https://via.placeholder.com/400x225/1f2937/ffffff?text=${encodeURIComponent(video.title.slice(0, 20))}`;
                         }}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200" />
